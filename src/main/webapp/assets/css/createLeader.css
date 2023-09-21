@@ -1,0 +1,126 @@
+@charset "UTF-8";
+
+@import
+	url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css")
+	;
+/* URL: https://github.com/webpixels/css */
+@import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
+
+/* Style for the form container */
+#container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+#container1{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+#container2 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+#container3 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+/* Style for the form */
+#leader-form, #Affidavit_form, #Constituenct-form, #Party-form {
+	width: 90%;
+	padding: 50px;
+	/* background-color: ; */
+	background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%,
+		rgba(148, 187, 233, 1) 100%);
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Style for the form title */
+h3 {
+	text-align: center;
+	/* margin-bottom: 50px; */
+}
+
+/* Style for the form inputs */
+input[type="text"], input[type="number"], textarea {
+	width: 100%;
+	padding: 12px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	border: none;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+textarea {
+	/* display: none; */
+	width: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+	margin-bottom: 10px;
+}
+
+/* Style for the form select */
+select {
+	width: 100%;
+	padding: 10px;
+	margin: 10px 0 20px 0;
+	border-radius: 5px;
+	border: none;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the form radio buttons */
+label {
+	margin-right: 10px;
+}
+
+/* Style for the form submit button */
+button {
+	padding: 10px 20px;
+	border-radius: 5px;
+	border: none;
+	background-color: #4CAF50;
+	color: white;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #3e8e41;
+}
+
+/* Style for the form main divs */
+.maindiv {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.left, .right {
+	width: 45%;
+}
+
+/* Style for the form textareas */
+textarea {
+	resize: none;
+}
+
+/* Style for the form description textareas */
+#description, #description1, #description2, #description3, #description4,
+	#description5 {
+	display: none;
+}
+
+/* Style for the form error messages */
+.error-message {
+	color: red;
+	margin-bottom: 10px;
+}
