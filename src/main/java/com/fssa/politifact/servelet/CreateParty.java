@@ -48,11 +48,14 @@ public class CreateParty extends HttpServlet {
 			request.setAttribute("status", "true");
 
 		} catch (DaoException | SQLException | LeaderValidateException e) {
+			
+			request.setAttribute("partyName5", partyName);
+			request.setAttribute("party_image5",partyImage);
 
 			request.setAttribute("errorMessage", e.getMessage());
 		}
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("CreateLeader.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("LeaderValues");
 
 		dispatcher.forward(request, response);
 	}

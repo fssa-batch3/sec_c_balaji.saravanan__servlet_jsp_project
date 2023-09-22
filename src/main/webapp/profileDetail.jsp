@@ -83,7 +83,7 @@
 
 
 				<p>
-					<strong> Job Role:</strong><%=leader.getPosition()%>
+					<strong>Role:</strong><%=leader.getPosition()%>
 				</p>
 				<p>
 					<strong>NAME:</strong><%=leader.getName()%>
@@ -96,6 +96,11 @@
 				</p>
 				<p>
 					<strong>job</strong><%=leader.getOccupation()%>
+				</p>
+				
+				<p>
+					<strong>Constituency</strong><%=leader.getCounstuencyName()%>
+					
 				</p>
 
 			</div>

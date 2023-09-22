@@ -1,6 +1,7 @@
 package com.fssa.politifact.servelet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -13,6 +14,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import com.fssa.politifact.dao.AffidavitDao;
 import com.fssa.politifact.dao.PartyDao;
@@ -57,38 +61,51 @@ public class PartyList extends HttpServlet {
 			List<Leader> leaderValues = affidavitService.readLeaderwithElection(election);
 			
 			List<String> uniquePartyNames = new ArrayList<>();
-			
+
 			for (Leader leader : leaderValues) {
-				
+
 				String partyName = leader.getPartyName();
-				
+
 				uniquePartyNames.add(partyName);
-				
+
+			}
+			
+			Set<String> uniqueConstituencyName = new HashSet<>();
+
+			for (Leader leader : leaderValues) {
+
+				String constituencyName = leader.getCounstuencyName();
+
+				uniqueConstituencyName.add(constituencyName);
+
 			}
 
 			List<Party> partyList = partyService.partyList();
 
 			List<Party> filteredPartyList = new ArrayList<>();
-			
+
 			for (Party party : partyList) {
-				
+
 				if (uniquePartyNames.contains(party.getPartyName())) {
-					
+
 					filteredPartyList.add(party);
 				}
 			}
-			
-			request.setAttribute("PartyList", filteredPartyList);
-			
-			request.setAttribute("election", election);
 
+			request.setAttribute("PartyList", filteredPartyList);
+
+			request.setAttribute("LeaderList", leaderValues);
+			
+			request.setAttribute("ConstituencyList", uniqueConstituencyName);
+
+			request.setAttribute("election", election);
 			
 
 		} catch (SQLException | DaoException e) {
 
 			e.printStackTrace();
 		}
-		
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("partyList.jsp");
 
 		dispatcher.forward(request, response);

@@ -20,10 +20,10 @@
 							<h3 class="">important Links</h3>
 						</div>
 						<ul>
-							<li><a href="" class="">Home</a></li>
-							<li><a href="" class="">portfolio</a></li>
+							<li><a href="index.jsp" class="">Home</a></li>
+							<li><a href="electioTypes.jsp" class="">portfolio</a></li>
 
-							<li><a href="" class="list_li">
+							<li><a href="mlaList.jsp" class="">
 									MLA</a></li>
 						</ul>
 					</div>
@@ -31,10 +31,10 @@
 				<div class="col-xl-4 col-lg-4 col-md-6 mb-50">
 					<div class="footer-widget">
 						<div class="footer-widget-heading">
-							<h3 class="list_li">Register</h3>
+							<h3 class="">Register</h3>
 						</div>
 						<div class="footer-text mb-25">
-							<p class="list_li">Subscribe to our new feeds Don't miss out,
+							<p class="">Subscribe to our new feeds Don't miss out,
 								please fill out the form below.</p>
 						</div>
 						<div class="subscribe-form">

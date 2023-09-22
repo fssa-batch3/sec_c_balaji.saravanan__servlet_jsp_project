@@ -64,11 +64,8 @@
 		}
 		} else {
 		%>
-		<%
-		String errorMessage = (String) request.getAttribute("errorMessage");
-		%>
-
-		<p><%=errorMessage%></p>
+		
+		<h1 style="text-align:center;">Not Found</h1>
 		<%
 		}
 		%>

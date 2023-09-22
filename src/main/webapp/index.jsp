@@ -238,7 +238,6 @@
 	<%
 	String loggedInEmail = (String) session.getAttribute("email");
 	%>
-	<%=loggedInEmail%>
 
 	<script>
 		

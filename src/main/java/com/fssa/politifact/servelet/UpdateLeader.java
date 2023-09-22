@@ -49,7 +49,6 @@ public class UpdateLeader extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
-	AdminListPage page = new AdminListPage();
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -91,6 +90,7 @@ public class UpdateLeader extends HttpServlet {
 		try {
 
 			leaderService.upDateLeader(leader, id);
+			
 			request.setAttribute("status", "true");
 
 		} catch (LeaderValidateException e) {
@@ -106,7 +106,10 @@ public class UpdateLeader extends HttpServlet {
 			request.setAttribute("errorMessage", e.getMessage());
 
 		}
-		page.doGet(request, response);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("AdminListPage");
+
+		dispatcher.forward(request, response);
 
 	}
 	

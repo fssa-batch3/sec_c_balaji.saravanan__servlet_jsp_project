@@ -3,6 +3,7 @@ package com.fssa.politifact.servelet;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,8 +31,6 @@ public class UpdateConstituency extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
-	AdminListPage page = new AdminListPage();
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -70,7 +69,9 @@ public class UpdateConstituency extends HttpServlet {
 		}
 		
 		
-		page.doGet(request, response);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("AdminListPage");
+
+		dispatcher.forward(request, response);
 
 	}
 	

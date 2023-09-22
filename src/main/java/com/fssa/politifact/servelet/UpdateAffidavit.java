@@ -32,8 +32,6 @@ public class UpdateAffidavit extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
-	AdminListPage page = new AdminListPage();
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -67,7 +65,9 @@ public class UpdateAffidavit extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		page.doGet(request, response);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("AdminListPage");
+
+		dispatcher.forward(request, response);
 
 	}
 

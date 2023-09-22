@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.List"%>
+<%@ page import="java.util.Set"%>
 <%@ page import="com.fssa.politifact.model.Party"%>
 <%@ page import="com.fssa.politifact.model.Leader"%>
 <!DOCTYPE html>
@@ -27,60 +28,72 @@
 	padding: 0;
 }
 
-body {
-	background: #fff;
-	text-align: center;
+.main_container {
+	margin-left: 30%;
+	display: flex;
+	flex-derection: row;
+	justify-content: space-arount;
+	align-item: center;
+	flex-wrap: wrap;
 }
 
 .card {
-	margin: 3%;
-	width: 20%;
-	transition: 0.3s;
-	background-color: rgba(0, 0, 0, 0.85);
-	position: relative;
-	display: inline-block;
-	margin: 1rem;
+	display: flex;
+	flex-direction: row; /* Corrected typo here */
+	border: 1px solid #ddd;
+	margin: 20px;
+	width: 400px;
+	background-color: #fff;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	transition: transform 0.2s;
+	justify-content: space-around; /* Corrected typo here */
+	align-items: center; /* Corrected typo here */
 }
 
 .card:hover {
-	box-shadow: 0 16px 36px 0 rgba(0, 0, 0, 0.7);
-	transform: translate(0, -5px);
+	transform: scale(1.05);
 }
 
-.container {
-	padding: 10px 20px;
-	text-align: left;
-	color: #fff;
+.card-image {
+	padding: 10px;
+	text-align: center;
 }
 
-.card a img {
-	height: 200px;
+.card-image img {
+	height: 150px;
+	width: 150px;
 }
 
-.category {
+.party-image {
+	width: 150px; /* Adjust image size as needed */
+	height: auto;
+}
+
+.card-content {
+	flex: 2;
+	padding: 20px;
+}
+
+.card-content a.category {
 	text-decoration: none;
-	color: rgb(250, 178, 58);
-	font-weight: bold;
-	font-size: 0.85em;
+	color: #007BFF;
+	font-size: 16px;
 }
 
-.category:hover {
-	text-decoration: underline;
+.card-content h2 {
+	font-size: 24px;
+	margin: 10px 0;
 }
 
-h2 {
-	margin: 0;
-	margin-top: 2px;
-	font-size: 20px;
+.card-content p {
+	font-size: 18px;
+	color: #333;
+	margin: 10px 0;
 }
 
-.author {
+.card-content a.author {
 	text-decoration: none;
-	color: rgb(90, 183, 243);
-}
-
-p {
-	margin-top: 7px;
+	color: #007BFF;
 }
 
 .author:hover {
@@ -106,7 +119,7 @@ p {
 	top: 50px;
 	left: 0px;
 	width: 200px;
-	height:600px;
+	height: 100vh;
 	background: #151719;
 	transition: all 300ms linear;
 }
@@ -142,6 +155,87 @@ p {
 	color: #fcfcfc;
 	text-decoration: none;
 }
+
+#dropdownForm {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+
+/* Style for the form-select (dropdown) elements */
+.form-select {
+	margin-right: 10px;
+	padding: 4px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	background-color: #fff;
+	margin-top: 30px;
+	font-size: 13px;
+}
+
+/* Style for the submit button */
+#dropdownForm button[type="submit"] {
+	padding: 10px 30px;
+	background-color: #007BFF;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	margin: 0 20%;
+	margin-top: 20px;
+}
+
+#dropdownForm button[type="submit"]:hover {
+	background-color: #0056b3;
+}
+
+
+#search_result {
+  position: fixed;
+  top: 6.5%;
+  left: 0;
+  width: 50%;
+  height: 400px;
+  overflow: scroll;
+  margin: 0 20%;
+  display: none;
+  z-index: 9999;
+
+
+}
+
+#search_result::-webkit-scrollbar {
+  display: none;
+}
+
+
+.card4 {
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px #e6e6e6, -5px -5px 10px #ffffff;
+  margin-bottom: 0.5em;
+  padding: 1em;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card4:hover {
+  transform: translateY(-5px);
+}
+
+.card4 a {
+  color: #333333;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.card4 p {
+  color: #666666;
+  font-size: 0.9rem;
+  margin-top: 0.3em;
+}
 </Style>
 </head>
 <body>
@@ -152,6 +246,8 @@ p {
 
 	<jsp:include page="${request.getContextPath()}/homeNavBar.jsp"></jsp:include>
 
+	<div id="search_result"></div>
+
 
 	<div id="sidebar">
 		<div class="toggle-btn" onclick="toggleSidebar(this)">
@@ -161,56 +257,123 @@ p {
 			<div class="item">
 				<a href="" target="_blank"></a>
 			</div>
-			<form id="dropdownForm">
+			<%
+			int election = (int) request.getAttribute("election");
+			%>
+			<form id="dropdownForm" action="FilterLeader">
+
+				<input type="hidden" name="election" value="<%=election%>">
+
 				<select class="form-select form-select-lg"
-					aria-label=".form-select-sm example">
-					<option selected>constituency</option>
-					<option value="1">One</option>
-					<option value="2">Two</option>
-					<option value="3">Three</option>
+					aria-label=".form-select-sm example" name="constituency">
+					<option value="">Select a constituency</option>
+					<%
+					Set<String> constituency = (Set<String>) request.getAttribute("ConstituencyList");
+
+					if (constituency != null) {
+						for (String constituencyvv : constituency) {
+					%>
+					<option value="<%=constituencyvv%>"><%=constituencyvv%></option>
+					<%
+					}
+					} else {
+					%>
+					<%="No constituencies available"%>
+					<%
+					}
+					%>
+
 				</select> <select class="form-select form-select-lg"
-					aria-label=".form-select-sm example">
-					<option selected>party</option>
-					<option value="1">One</option>
-					<option value="2">Two</option>
-					<option value="3">Three</option>
+					aria-label=".form-select-sm example" name="party">
+					<option value="">Select a Party</option>
+					<%
+					List<Party> partyNames = (List<Party>) request.getAttribute("PartyList");
+
+					if (partyNames != null) {
+
+						for (int i = 0; i < partyNames.size(); i++) {
+							Party party = partyNames.get(i);
+					%>
+					<option value="<%=party.getPartyId()%>"><%=party.getPartyName()%></option>
+					<%
+					}
+					}
+					%>
+
 				</select>
+
+				<button type="submit">submit</button>
 			</form>
+
+			<!-- <form id="dropdownForm" action="FilterLeader">
+
+				<input type="hidden" name="election" value="<%=election%>">
+
+				<select class="form-select form-select-lg"
+					aria-label=".form-select-sm example" name="constituency">
+					<option value="">Select a constituency</option>
+					<%
+					if (constituency != null) {
+						for (String constituencyvv : constituency) {
+					%>
+					<option value="<%=constituencyvv%>"><%=constituencyvv%></option>
+					<%
+					}
+					} else {
+					%>
+					<%="No constituencies available"%>
+					<%
+					}
+					%>
+
+				</select>
+
+				<button type="submit">submit</button>
+			</form>-->
 		</div>
 	</div>
 
-	<%
-	int election = (int) request.getAttribute("election");
+	<div class="main_container">
+		<%
+		List<Party> partyList = (List<Party>) request.getAttribute("PartyList");
 
-	List<Party> partyList = (List<Party>) request.getAttribute("PartyList");
+		List<Leader> leaderlist = (List<Leader>) request.getAttribute("Leaderlist");
 
-	List<Leader> leaderlist = (List<Leader>) request.getAttribute("Leaderlist");
+		if (partyList != null) {
 
-	if (partyList != null) {
+			for (Party partyValue : partyList) {
+		%>
 
-		for (Party partyValue : partyList) {
-	%>
-
-	<div class="card">
-		<a href="Profile"> <img src="<%=partyValue.getPartyImageUrl()%>"
-			alt="<%=partyValue.getPartyName()%>" style="width: 100%">
-			<div class="container">
-				<a class="category" href="#">Party Name<a>
-						<h2>
-							<b><%=partyValue.getPartyName()%></b>
-						</h2>
-						<p>
-							More <a class="author"
-								href="Profile?partyId=<%=partyValue.getPartyId()%>&election=<%=election%> ">Details</a>
-						</p>
+		<div class="card">
+			<div class="card-image">
+				<img src="<%=partyValue.getPartyImageUrl()%>"
+					alt="<%=partyValue.getPartyName()%>" class="party-image">
 			</div>
-		</a>
-	</div>
+			<div class="card-content">
+				<a class="category" href="#">Party Name</a>
+				<h2>
+					<b><%=partyValue.getPartyName()%></b>
+				</h2>
+				<p>
+					More <a class="author"
+						href="Profile?partyId=<%=partyValue.getPartyId()%>&election=<%=election%> ">Details</a>
+				</p>
+			</div>
+		</div>
 
-	<%
-	}
-	}
-	%>
+		<%
+		}
+		}
+		%>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 
 	<jsp:include page="${request.getContextPath()}/footer.jsp"></jsp:include>
 
@@ -221,5 +384,14 @@ p {
 			document.getElementById("sidebar").classList.toggle('active');
 		}
 	</script>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+	<script src="<%=request.getContextPath()%>/assets/js/search.js"></script>
+
 </body>
 </html>

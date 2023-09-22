@@ -15,6 +15,9 @@
 
 <link href="<%=request.getContextPath()%>/assets/css/createLeader.css"
 	rel="stylesheet">
+	
+	<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.css">
 
 <style>
 #container3, #container, #container2, #container1 {
@@ -398,7 +401,7 @@
 								<div class="maindiv">
 									<div class="left">
 										<label for="name">Name</label> <input type="text" id="name"
-											name="name" required> <label for="id"
+											name="name" required pattern="[a-zA-Z ]{2,}"> <label for="id"
 											style="display: none">Id</label> <input type="number" id="id"
 											name="id" style="display: none"> <label
 											for="position">Position</label> <select id="position"
@@ -423,7 +426,7 @@
 										<div>
 											<label for="birth_radio">Birth</label> <input type="radio"
 												name="desc_radio" id="birth_radio" value="birth"
-												onclick="showDescription()">
+												onclick="showDescription()" >
 
 											<textarea name="descriptionOfBirth" id="description3"
 												cols="90" rows="3" style="display: none;" required></textarea>
@@ -446,10 +449,10 @@
 									</div>
 									<div class="right">
 										<label for="experience">Experience</label> <input
-											type="number" id="experience" name="experience" required>
+											type="number" id="experience" name="experience" required pattern="[0-9]">
 										<label for="occupation">Occupation</label> <input type="text"
 											id="occupation" name="occupation" required> <select
-											id="counstuencyName" name="counstuencyName" required>
+											id="counstuencyName" name="counstuencyName" required pattern="[a-zA-Z ]{4,}">
 											<option value="">Select a constituency</option>
 											<%
 											List<Constituency> constituency = (List<Constituency>) request.getAttribute("constituencyList");
@@ -464,7 +467,7 @@
 											}
 											%>
 										</select> <label for="image_url">image Url</label> <input type="text"
-											id="imageUrl" name="image_url" required>
+											id="imageUrl" name="image_url" required pattern="https?://.*">
 
 
 										<div>
@@ -594,9 +597,9 @@
 											required style="display: none"> <label
 											for="constituencyName">Constituency Name</label> <input
 											type="text" id="constituencyName" name="constituencyName"
-											required> <label for="districtName">District
+											required pattern="[a-zA-Z ]{4,}"> <label for="districtName">District
 											Name</label> <input type="text" id="districtName" name="districtName"
-											required>
+											required pattern="[a-zA-Z ]{4,}">
 
 
 									</div>
@@ -604,7 +607,7 @@
 
 										<label for="constituencyNumber">Constituency Number</label> <input
 											type="number" id="constituencyNumber"
-											name="constituencyNumber" required> <select
+											name="constituencyNumber" required pattern="[0-9]"> <select
 											id="election1" name="election1" required>
 											<option value="election">Election type</option>
 											<%
@@ -652,14 +655,14 @@
 										<input type="text" id="PartyId" name="PartyId" required
 											style="display: none"> <label for="partyName">Party
 											Name</label> <input type="text" id="partyNames" name="partyName"
-											required>
+											required pattern="[a-zA-Z ]">
 
 
 									</div>
 									<div class="right">
 
 										<label for="party_image">Party Image URL</label> <input
-											type="text" id="party_image" name="party_image" required>
+											type="text" id="party_image" name="party_image" required pattern="https?://.*">
 
 
 									</div>
@@ -679,8 +682,32 @@
 
 		</div>
 	</div>
+	
+	<script
+		src="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.js">
+		
+	</script>
+<%
+	String status = (String) request.getAttribute("status");
 
+	String erMessage = (String) request.getAttribute("errorMessage");
+	%>
 
+<script>
+	
+        const status = "<%=status%>";
+        
+		const error= "<%=erMessage%>";
+
+		if (status === "true") {
+
+			Notify.success("Update successfully");
+
+		} else {
+
+			Notify.error(error);
+		}
+	</script>
 
 
 

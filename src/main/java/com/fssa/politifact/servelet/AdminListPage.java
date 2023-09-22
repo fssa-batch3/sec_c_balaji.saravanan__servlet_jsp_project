@@ -127,5 +127,14 @@ public class AdminListPage extends HttpServlet {
 		AffidavitService affidavitService = new AffidavitService(affidavitDAo, affidavitValidator);
 		return affidavitService;
 	}
+	
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		doGet(request, response);
+
+	}
+
 
 }

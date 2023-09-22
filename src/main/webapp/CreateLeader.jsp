@@ -91,14 +91,18 @@
 									<div class="left">
 										<label for="name">Name</label> <input type="text" id="name"
 											name="name" required
-											value="<c:if test='${not empty requestScope.name}'>${requestScope.name}</c:if>">
-										<label for="position">Position</label> <select id="position"
-											name="position" required>
+											value="<c:if test='${not empty requestScope.name}'>${requestScope.name}</c:if>" pattern="[a-zA-Z ]{2,}">
+										<label for="position">Position</label> 
+										
+										<select id="position"
+											name="position" required value="<c:if test='${not empty requestScope.position}'>${requestScope.position}</c:if>">
 											<option value="">Enter your Position</option>
 											<option value="MEMBER_OF_LEGISLATIVE_ASSEMBLY">Minister</option>
 											<option value="COUNCIL_MINISTER">Council of Minister</option>
-										</select> <label for="partyDetail">Party</label> <select id="partyName"
-											name="partyDetail" required>
+										</select>
+										
+										 <label for="partyDetail">Party</label> <select id="partyName"
+											name="partyDetail" required value="<c:if test='${not empty requestScope.partyDetail}'>${requestScope.partyDetail}</c:if>">
 											<option value="">Select a Party</option>
 											<%
 											List<Party> partyNames = (List<Party>) request.getAttribute("partyName");
@@ -120,17 +124,17 @@
 										<div>
 											<label for="birth_radio">Birth</label> <input type="radio"
 												name="desc_radio" id="birth_radio" value="birth"
-												onclick="showDescription()">
+												onclick="showDescription()" >
 
 											<textarea name="descriptionOfBirth" id="description3"
-												cols="90" rows="3" style="display: none;" required></textarea>
+												cols="90" rows="3" style="display: none;" required value="<c:if test='${not empty requestScope.descriptionOfBirth}'>${requestScope.descriptionOfBirth}</c:if>"></textarea>
 										</div>
 										<div>
 											<label for="education_radio">Education</label> <input
 												type="radio" name="desc_radio" id="education_radio"
 												value="education" onclick="showDescription()">
 											<textarea name="descriptionOfEducation" id="description4"
-												cols="90" rows="3" style="display: none;"></textarea>
+												cols="90" rows="3" style="display: none;" value="<c:if test='${not empty requestScope.descriptionOfEducation}'>${requestScope.descriptionOfEducation}</c:if>"></textarea>
 										</div>
 
 										<div>
@@ -138,15 +142,17 @@
 												type="radio" name="desc_radio" id="family_radio"
 												value="family" onclick="showDescription()">
 											<textarea name="descriptionOfPastWorkExperience"
-												id="description5" cols="90" rows="3" style="display: none;"></textarea>
+												id="description5" cols="90" rows="3" style="display: none;" value="<c:if test='${not empty requestScope.descriptionOfPastWorkExperience}'>${requestScope.descriptionOfPastWorkExperience}</c:if>"></textarea>
 										</div>
 									</div>
 									<div class="right">
 										<label for="experience">Experience</label> <input
-											type="number" id="experience" name="experience" required>
+											type="number" id="experience" name="experience" required value="<c:if test='${not empty requestScope.experience}'>${requestScope.experience}</c:if>">
 										<label for="occupation">Occupation</label> <input type="text"
-											id="occupation" name="occupation" required> <select
-											id="counstuencyName" name="counstuencyName" required>
+											id="occupation" name="occupation" required value="<c:if test='${not empty requestScope.occupation}'>${requestScope.occupation}</c:if>"pattern="[a-zA-Z ]{2,}"> 
+											
+											<select
+											id="counstuencyName" name="counstuencyName" required selected="<c:if test='${not empty requestScope.counstuencyName}'>${requestScope.counstuencyName}</c:if>">
 											<option value="">Select a constituency</option>
 											<%
 											List<Constituency> constituency = (List<Constituency>) request.getAttribute("constituencyList");
@@ -164,7 +170,7 @@
 											%>
 
 										</select> <label for="image_url">image Url</label> <input type="text"
-											id="imageUrl" name="image_url" required>
+											id="imageUrl" name="image_url" required value="<c:if test='${not empty requestScope.image_url}'>${requestScope.image_url}</c:if>">
 
 
 										<div>
@@ -173,7 +179,7 @@
 												value="movie" onclick="showDescription()">
 											<textarea name="descritionOfpolitics" id="description"
 												cols="90" rows="3" style="display: none;" required
-												pattern="[\u0B80-\u0BFF]+"></textarea>
+												pattern="[\u0B80-\u0BFF]+" value="<c:if test='${not empty requestScope.descritionOfpolitics}'>${requestScope.descritionOfpolitics}</c:if>"></textarea>
 										</div>
 
 										<div>
@@ -183,7 +189,7 @@
 											<div>
 												<textarea name="descriptionOffamily" id="description1"
 													cols="90" rows="3" style="display: none;" required
-													pattern="[\u0B80-\u0BFF]+"></textarea>
+													pattern="[\u0B80-\u0BFF]+" value="<c:if test='${not empty requestScope.descriptionOffamily}'>${requestScope.descriptionOffamily}</c:if>"></textarea>
 											</div>
 
 										</div>
@@ -194,7 +200,7 @@
 												onclick="showDescription()">
 											<textarea name="descriptionOfIncome" id="description2"
 												cols="90" rows="3" style="display: none;" required
-												pattern="[\u0B80-\u0BFF]+"></textarea>
+												pattern="[\u0B80-\u0BFF]+" value="<c:if test='${not empty requestScope.descriptionOfIncome}'>${requestScope.descriptionOfIncome}</c:if>"></textarea>
 										</div>
 
 
@@ -256,7 +262,7 @@
 											}
 											%>
 										</select> <label for="affidavit_url">Affidavit url</label> <input
-											type="text" id="affidavit_url" name="affidavit_url" required>
+											type="text" id="affidavit_url" name="affidavit_url" required value="<c:if test='${not empty requestScope.affiurl}'>${requestScope.affiurl}</c:if>" >
 
 
 									</div>
@@ -282,9 +288,12 @@
 
 										<label for="constituencyName">Constituency Name</label> <input
 											type="text" id="constituencyName" name="constituencyName"
-											required> <label for="districtName">District
+											required value="<c:if test='${not empty requestScope.constituencyName}'>${requestScope.constituencyName}</c:if>"> 
+											
+											
+											<label for="districtName">District
 											Name</label> <input type="text" id="districtName" name="districtName"
-											required>
+											required value="<c:if test='${not empty requestScope.districtName}'>${requestScope.districtName}</c:if>">
 
 
 									</div>
@@ -336,14 +345,14 @@
 									<div class="left">
 
 										<label for="partyName">Party Name</label> <input type="text"
-											id="partyName" name="partyName" required>
+											id="partyName" name="partyName" pattern="[a-zA-Z ]{2,}" required value="<c:if test='${not empty requestScope.partyName5}'>${requestScope.partyName5}</c:if>">
 
 
 									</div>
 									<div class="right">
 
 										<label for="party_image">Party Image URL</label> <input
-											type="text" id="party_image" name="party_image" required>
+											type="text" id="party_image" name="party_image" required value="<c:if test='${not empty requestScope.party_image5}'>${requestScope.party_image5}</c:if>">
 
 
 									</div>
@@ -400,7 +409,7 @@
 
 		if (status === "true") {
 
-			Notify.success("Account created successfully");
+			Notify.success("Add successfully");
 
 		} else {
 

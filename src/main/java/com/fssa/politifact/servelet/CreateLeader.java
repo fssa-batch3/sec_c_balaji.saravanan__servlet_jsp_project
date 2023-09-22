@@ -111,60 +111,11 @@ public class CreateLeader extends HttpServlet {
 			request.setAttribute("errorMessage", e.getMessage());
 		}
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("CreateLeader.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("LeaderValues");
 
 		dispatcher.forward(request, response);
 	}
-
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		try {
-
-			List<Party> partyNames = getPartyService().partyList();
-
-			List<Constituency> constituencyList = getConstituencyService().constuencyList();
-
-			List<Leader> leaderList = getLeaderService().callAllLeader();
-			
-			List<Election> electionList= getElectionService().electionList();
-			
-			System.out.println(leaderList);
-
-			request.setAttribute("LeaderList", leaderList);
-			
-			request.setAttribute("electionList", electionList);
-
-			request.setAttribute("partyName", partyNames);
-
-			request.setAttribute("constituencyList", constituencyList);
-
-			RequestDispatcher dispatcher = request.getRequestDispatcher("CreateLeader.jsp");
-			
-			dispatcher.forward(request, response);
-		} catch (SQLException | LeaderValidateException | DaoException e) {
-
-			e.printStackTrace();
-
-		}
-	}
-
-	public static PartyService getPartyService() {
-		PartyValidator partyvalidate = new PartyValidator();
-		PartyDao partDao = PartyDao.getObj();
-		PartyService partyService = new PartyService(partyvalidate, partDao);
-		return partyService;
-
-	}
-
-	public static ConstituencyService getConstituencyService() {
-		ConstituencyValidator constituencyValidate = new ConstituencyValidator();
-		ConstituencyDao constituencyDao = ConstituencyDao.getObj();
-		ConstituencyService constituencyService = new ConstituencyService(constituencyValidate, constituencyDao);
-		return constituencyService;
-
-	}
-
 	public static LeaderService getLeaderService() {
 		LeaderValidator leaderValidate = new LeaderValidator();
 		LeaderDao leaderDao = LeaderDao.getObj();
@@ -172,13 +123,4 @@ public class CreateLeader extends HttpServlet {
 		return leaderService;
 
 	}
-	
-	public static ElectionService getElectionService() {
-		ElectionValidator electionValidator = new ElectionValidator();
-		ElectionDao electionDao = ElectionDao.getObj();
-		ElectionService electiocService = new ElectionService(electionValidator, electionDao);
-		return electiocService;
-
-	}
-
 }

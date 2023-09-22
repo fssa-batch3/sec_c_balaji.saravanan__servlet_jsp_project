@@ -3,6 +3,7 @@ package com.fssa.politifact.servelet;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,8 +32,6 @@ public class UpadateParty extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	
-	AdminListPage page = new AdminListPage();
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -63,11 +62,12 @@ public class UpadateParty extends HttpServlet {
 		} catch (LeaderValidateException | SQLException | DaoException e) {
 
 			request.setAttribute("errorMessage", e.getMessage());
-
-			e.printStackTrace();
+			
 		}
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("AdminListPage");
 
-		page.doGet(request, response);
+		dispatcher.forward(request, response);
 
 	}
 

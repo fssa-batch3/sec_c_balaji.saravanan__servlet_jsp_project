@@ -42,7 +42,7 @@
 			<!-- Navigation -->
 			<ul class="navbar-nav">
 				<li class="nav-item"><a class="nav-link"
-					href="${root}/admin/admin_dashboard.html"> <i
+					href="#"> <i
 						class="bi bi-house"></i> Dashboard
 				</a></li>
 				<li class="nav-item"><a class="nav-link"
@@ -53,7 +53,7 @@
 						class="bi bi-chat"></i> comments <span
 						class="badge bg-soft-primary text-primary rounded-pill d-inline-flex align-items-center ms-auto">0</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link" href="CreateLeader"> <i
+				<li class="nav-item"><a class="nav-link" href="LeaderValues"> <i
 						class="bi bi-bookmarks"></i> Create
 				</a></li>
 				<li class="nav-item"><a class="nav-link" href="#"> <i

@@ -36,7 +36,7 @@ String loggedInEmail = (String) session.getAttribute("email");
 							href="budget.jsp" id="option_five_sub_two">Budget</a></li>
 					</ul></li>
 				<li class="nav-item " id="admin"><a class="nav-link list_li"
-					href="CreateLeader">Admin</a></li>
+					href="LeaderValues">Admin</a></li>
 				<!-- <li class="nav-item">
                 <a class="nav-link" href="#">Contact Us</a>
             </li> -->

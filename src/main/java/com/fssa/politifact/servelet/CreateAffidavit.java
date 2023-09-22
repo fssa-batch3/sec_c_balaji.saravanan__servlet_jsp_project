@@ -61,15 +61,18 @@ public class CreateAffidavit extends HttpServlet {
 			
 		} catch (DaoException | SQLException | LeaderValidateException e) {
 			
+			request.setAttribute("affiurl", url);
+			
 			request.setAttribute("errorMessage", e.getMessage());
 		}
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("CreateLeader.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("LeaderValues");
 
 		dispatcher.forward(request, response);
 	}
 	
 	public static AffidavitService getArtifacService() {
+		
 		AffidavitValidator arrtifactValidator = new AffidavitValidator();
 		AffidavitDao affidavitDao= AffidavitDao.getObj();
 		AffidavitService affidavitService= new AffidavitService(affidavitDao,arrtifactValidator);

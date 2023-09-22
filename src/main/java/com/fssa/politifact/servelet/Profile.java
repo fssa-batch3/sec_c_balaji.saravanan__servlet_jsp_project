@@ -42,9 +42,9 @@ public class Profile extends HttpServlet {
 		try {
 			
 			int id= Integer.parseInt(request.getParameter("partyId"));
-			System.out.println(id);
+			
 			int electionId= Integer.parseInt(request.getParameter("election"));
-			System.out.println(electionId);
+			
 		    AffidavitService affidavitService= getAffidavitService();
 		    
 			List<Leader> leaderValues = affidavitService.readSpecificLeaderPartyId(id,electionId);

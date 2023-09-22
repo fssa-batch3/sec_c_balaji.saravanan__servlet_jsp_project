@@ -20,6 +20,89 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <style>
+    .governerlistsort {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: start;
+}
+
+.governer h1 {
+    padding: 30px;
+    font-size: 25px;
+    color: #FE9227;
+    text-align: center;
+}
+
+.governer p {
+    text-align: center;
+    color: black;
+    font-size: 16px;
+}
+
+.governer {
+    height: 750px;
+    overflow-y: scroll;
+
+}
+
+.governer::-webkit-scrollbar {
+    display: none;
+}
+
+.mla-list-intro {
+    line-height: 2;
+    padding: 20px;
+    font-size: 20px;
+}
+
+.governer table {
+    border-collapse: collapse;
+}
+
+.governer table th {
+    background-color: black;
+    color: #ffffff;
+    padding: 10px;
+}
+
+.governer table td {
+    padding: 15px;
+    color: black;
+    font-weight: 700;
+
+}
+
+/* .governer table tbody tr:hover{
+    background-color: #ffffff;
+    transform: scale(1.1);
+    transition: 0.5s;
+    box-shadow: 4px 3px 20px -2px rgba(16, 52, 107, 1); */
+
+
+
+.governer table tr td .name-img {
+    display: flex;
+    align-items: center;
+
+}
+
+.governer tr td {
+    text-align: center;
+}
+
+.governer table tr td .name-img img {
+    width: 40px;
+    height: 40px;
+}
+
+.governer table td a {
+    text-decoration: none;
+    color: black;
+    font-weight: 800;
+    font-size: 15px;
+
+}
         .mla-list-intro {
             display: flex;
             flex-direction: row;
