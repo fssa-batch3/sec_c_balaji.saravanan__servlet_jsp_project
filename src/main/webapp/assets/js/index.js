@@ -115,6 +115,7 @@ const displayNewsData = articles => {
 		);
 
 		while (walker.nextNode()) {
+			
 			const node = walker.currentNode;
 			const text = node.nodeValue.trim();
 			console.log(text);

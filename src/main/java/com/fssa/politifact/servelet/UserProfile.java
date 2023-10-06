@@ -41,7 +41,7 @@ public class UserProfile extends HttpServlet {
 		
 		try {
 			
-			List<User> userList= userService.getUser(email);
+			User userList= userService.getUser(email);
 			
 			request.setAttribute("UserList", userList );
 			

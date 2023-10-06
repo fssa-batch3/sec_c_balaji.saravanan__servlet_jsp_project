@@ -7,9 +7,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../../assets/css/main.css" rel="stylesheet">
-
-    <link rel="icon" type="image/jpg" sizes="60x32" href="../../assets/images/icons/p logo.jpg">
 
     <title>governer</title>
 
@@ -17,10 +14,15 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="../../assets/css/footer.css">
     <link href="<%=request.getContextPath()%>/assets/css/footer.css"
 	rel="stylesheet">
-    <style>
+	<link href="<%=request.getContextPath()%>/assets/css/index.css"
+	rel="stylesheet">
+	
+	<link href="<%=request.getContextPath()%>/assets/css/main.css"
+	rel="stylesheet">
+	
+	 <style>
         #head_tamil {
             position: sticky;
             top: 0;
@@ -140,262 +142,8 @@
             transform: scale(1.3);
             color: orangered;
         }
-        
-        .governerlistsort {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: start;
-}
-
-.governer h1 {
-    padding: 30px;
-    font-size: 25px;
-    color: #FE9227;
-    text-align: center;
-}
-
-.governer p {
-    text-align: center;
-    color: black;
-    font-size: 16px;
-}
-
-.governer {
-    height: 750px;
-    overflow-y: scroll;
-
-}
-
-.governer::-webkit-scrollbar {
-    display: none;
-}
-
-.mla-list-intro {
-    line-height: 2;
-    padding: 20px;
-    font-size: 20px;
-}
-
-.governer table {
-    border-collapse: collapse;
-}
-
-.governer table th {
-    background-color: black;
-    color: #ffffff;
-    padding: 10px;
-}
-
-.governer table td {
-    padding: 15px;
-    color: black;
-    font-weight: 700;
-
-}
-
-/* .governer table tbody tr:hover{
-    background-color: #ffffff;
-    transform: scale(1.1);
-    transition: 0.5s;
-    box-shadow: 4px 3px 20px -2px rgba(16, 52, 107, 1); */
-
-
-
-.governer table tr td .name-img {
-    display: flex;
-    align-items: center;
-
-}
-
-.governer tr td {
-    text-align: center;
-}
-
-.governer table tr td .name-img img {
-    width: 40px;
-    height: 40px;
-}
-
-.governer table td a {
-    text-decoration: none;
-    color: black;
-    font-weight: 800;
-    font-size: 15px;
-
-}
-
-#governer-list table {
-    /* margin-left: 25%; */
-    width: 900px;
-
-}
-
-/* .governer table td a:hover {
-    background-color: #B1B2FF;
-    transform: scale(1.1);
-    transition: 0.5s;
-    padding: 10px;
-    color: black;
-    border-radius: 10px;
-} */
-
-.profile-main {
-    position: relative;
-    width: 200px;
-    height: 200px;
-
-}
-
-.parties {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: all 0.5s ease;
-}
-
-.parties:hover {
-    transform: rotatey(180deg);
-}
-
-.fontsidepro {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    background-image: url("../images/icons/logo.png");
-    background-position: center;
-    background-size: cover;
-    font-size: 16px;
-    font-weight: 900;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-    border-radius: 10px;
-}
-
-/* .fontsidepro:nth-child(even) {
-    background-image: url("../images/Mmk_flag.png");
-} */
-
-.fontsidepro p {
-    /* background-color: rgb(10, 135, 252); */
-    /* background-color: rgba(63, 53, 251, 0.4); */
-    text-align: center;
-    color: black;
-    height: 100%;
-    width: 100%;
-    text-shadow: -2px 2px lightgoldenrodyellow;
-    font-weight: 900;
-
-}
-
-.backsidepro {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    /* background-color: #B1B2FF; */
-    background: linear-gradient(hsl(36, 100%, 50%) 10%,
-            hsl(72, 100%, 50%) 60%, white 90%);
-    transform: rotatey(180deg);
-    color: black;
-    text-shadow: -2px 2px #ffffff;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-    border-radius: 10px;
-}
-
-.backsidepro img {
-    width: 120px;
-    height: 140px;
-    border-radius: 5px;
-}
-
-.backsidepro button {
-    padding: 5px;
-    background-color: #f2f3f4;
-    border-radius: 10px;
-
-}
-
-.parties .backsidepro button a {
-    font-size: 13px;
-}
-
-.backsidepro button:hover {
-    background-color: #B1B2FF;
-    border-radius: 10px;
-}
-
-td .name-img img {
-    width: 40px;
-    height: 40px;
-}
-
-td .name-img {
-    display: flex;
-    align-items: center;
-}
-
-/* mla ditail page */
-.ditails h1 {
-    margin: 20px 0 30px 20px;
-    font-size: 30px;
-
-}
-
-.ditails p {
-    margin: 20px 0 30px 20px;
-    line-height: 1.2;
-    font-size: 18px;
-}
-
-.allcandidate {
-    height: 700px;
-    overflow: scroll;
-    width: 90%;
-}
-
-.candidate h2 {
-    text-align: center;
-    padding: 40px;
-}
-
-.candidate table {
-    border-collapse: collapse;
-    margin: 40px 10% 30px 20%;
-}
-
-.candidate table th {
-    background-color: black;
-    color: #ffffff;
-}
-
-.candidate table td {
-    padding: 20px;
-    border: 2px solid gray;
-    background-color: #ffffff1A;
-    color: black;
-    font-weight: 700;
-
-}
-
-.candidate table td a {
-    text-decoration: none;
-    color: black;
-    font-weight: 800;
-    font-size: 22px;
-
-}
-        
     </style>
+    
 
 </head>
 
@@ -408,11 +156,11 @@ td .name-img {
     <!-- governer list -->
 
     <div id="governer-list" class="governer">
-        <h1>தமிழ்நாடு ஆளுநர்களின் பட்டியல்
+        <h1>TamilNadu Governer List
         </h1>
-        <p>பொதுவாக ஆளுநர் என்பவர் இறையாண்மைக்கு உட்படாத அரசு ஒன்றின் அதன் அரசுத்தலைவருக்குக் கீழ் செயல்படும் நிருவாக
-            அதிகாரி ஆவார். கூட்டமைப்பு அரசொன்றில் ஆளுநர் ஒருவர் அரசினால் நியமிக்கப்படலாம் அல்லது மக்களால் அல்லது அரசு
-            உறுப்பினர்களால் தெர்ந்தெடுக்கப்படலாம்.</p>
+        <p>Generally a governor is an executive of a non-sovereign government acting under its head of state
+            He is an officer. In a federal state a governor may be appointed by the state or by the people or by the state
+            may be elected by the members.</p>
 
         <div class="governerlistsort">
 
@@ -449,9 +197,9 @@ td .name-img {
 
                 <tr id="head_tamil">
                     <th>Sl.No</th>
-                    <th>ஆளுநர்<button id="sortName"><i class="fa fa-sort"></i></button></th>
-                    <th>இருந்து<button id="sort-date"><i class="fa fa-sort"></i></button></th>
-                    <th>வரை</th>
+                    <th>Governer<button id="sortName"></button></th>
+                    <th>From<button id="sort-date"></button></th>
+                    <th>To</th>
                 </tr>
 
                 <tbody class="mla_list_body">
@@ -839,40 +587,7 @@ td .name-img {
     });
 
 
-    const tamil_tran = document.getElementById("lang_ta");
-
-    const english_tran = document.getElementById("lang_eng");
-
-    tamil_tran.addEventListener("click", () => {
-      document.querySelector(".mla_list_body").innerHTML = "";
-
-
-
-      default_list(governer_list);
-    });
-
-    english_tran.addEventListener("click", () => {
-      document.querySelector(".mla_list_body").innerHTML = "";
-
-
-      default_list(governer_list_english);
-    });
-
-    const language_setting11 = localStorage.getItem("language");
-
-    if (language_setting11 === "english") {
-      document.querySelector(".mla_list_body").innerHTML = "";
-
-      default_list(governer_list_english);
-
-    }
-    else if (language_setting11 == "tamil") {
-
-      document.querySelector(".mla_list_body").innerHTML = "";
-
-      default_list(governer_list);
-    }
-
+   
 
     </script>
 

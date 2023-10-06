@@ -7,259 +7,202 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="../../assets/css/main.css" rel="stylesheet">
+
 <title>pastleader</title>
 <link href="<%=request.getContextPath()%>/assets/css/footer.css"
 	rel="stylesheet">
+	<link href="<%=request.getContextPath()%>/assets/css/index.css"
+	rel="stylesheet">
+	
+	<link href="<%=request.getContextPath()%>/assets/css/main.css"
+	rel="stylesheet">
+	
+	<style>
+	
+	 table button {
+            background-image: linear-gradient(to right top, #abc2e4, #92cef0, #75dbf0, #67e5e2, #79edc8);
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 8px 10px;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        table button:hover {
+            background-color: #0062cc;
+        }
+
+        #head_tamil {
+            position: sticky;
+            top: 50px;
+            z-index: 10;
+        }
+
+        #chartCanvas {
+
+            min-width: 650px;
+            margin: 0 auto;
+        }
+
+        .piechart_heading {
+            text-align: center;
+            font-weight: 700;
+            font-size: 18px;
+            color: indianred;
+
+        }
+
+        fieldset {
+            padding: 0;
+            margin: 0;
+            border: 0;
+            max-width: 340px;
+            border-radius: 20px;
+            width: 100%;
+            position: sticky;
+            top: 50px;
+        }
+
+        legend {
+            font-size: 22px;
+            font-weight: 600;
+            color: #191919;
+            margin: 0;
+            background: #edf4fe;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            border-radius: 10px 10px 0 0;
+            border: 2px solid #3a88f6;
+            display: flex;
+        }
+
+        fieldset label {
+            font-weight: 300;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            flex: 1;
+            box-sizing: border-box;
+            display: flex;
+            padding: 20px 20px 20px 50px;
+            font-weight: 500;
+            color: #191919;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        fieldset input[type="radio"] {
+            position: relative;
+            appearance: none;
+            -webkit-appearance: none;
+            transition: linear 0.8s;
+            height: 0;
+            width: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        fieldset input[type="radio"]:after {
+            content: "";
+            position: absolute;
+            height: 16px;
+            width: 16px;
+            top: -10.5px;
+            left: -30px;
+            border-radius: 20px;
+            border: 2px solid #3a88f6;
+            transition: linear 0.2s;
+            cursor: pointer;
+        }
+
+        fieldset input[type="radio"]:checked:after {
+            content: "";
+            position: absolute;
+            height: 16px;
+            width: 16px;
+            background: #3a88f6;
+            transition: linear 0.2s;
+            cursor: pointer;
+        }
+
+        fieldset input[type="radio"]:checked:before {
+            content: "";
+            position: absolute;
+            height: 8px;
+            width: 8px;
+            border-radius: 4px;
+            background: #fff;
+            left: -24px;
+            top: -4.5px;
+            z-index: 1;
+            cursor: pointer;
+        }
+
+        .radio-item-container {
+            display: flex;
+            flex-direction: column;
+            border: 2px solid #3a88f6;
+            border-top: 0;
+            background: #fff;
+            border-radius: 0 0 10px 10px;
+            padding: 10px 0;
+        }
+
+        .radio-item {
+            display: flex;
+            position: relative;
+        }
+
+        .icon {
+            font-size: 24px;
+            position: absolute;
+            right: 26px;
+            top: 11px;
+            transition: linear 0.3s;
+        }
+
+        fieldset input[type="radio"]:checked+span>.icon {
+            transform: scale(1.3);
+            color: red;
+        }
+	</style>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
-
-<link rel="stylesheet" href="../../assets/css/footer.css">
-
+	
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<style>
-
-.pastleaderside {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: start;
-
-}
-
-.pastleaders h1 {
-    padding: 40px;
-    text-align: center;
-    font-size: 25px;
-
-    /* text-decoration: underline double orange; */
-}
 
 
-.pastleaders p {
-    padding: 20px;
-    text-align: center;
-    font-size: 15px;
 
-    /* text-decoration: underline double orange; */
-}
-
-.pastleaders table td {
-    padding: 2em;
-    border: none;
-}
-
-.pastleaders table {
-    /* margin-left: 15%; */
-    border: 2px solid black;
-    width: 70%;
-    border: 5px;
-    border-style: solid;
-    border-color: rgb(129, 191, 218) rgb(193, 236, 155);
-    outline: 2px solid rgb(5, 13, 1);
-}
-
-
-.pastleaders table tbody th {
-    background-color: #66CDAA;
-    color: #ffffff;
-    padding: 20px;
-}
-
-.pastleaders table td a {
-    text-decoration: none;
-    color: black;
-}
-
-.pastleaders table td a:hover {
-    transform: scale(1.1);
-    transition: 0.5s;
-    /* background-color: #B1B2FF; */
-    color: #ffffff;
-    padding: 10px;
-    border-radius: 10px;
-    column-span: 1;
-}
-
-#pastleader p {
-    color: black;
-    text-shadow: -2px 2px #ffffff;
-
-}
-table button {
-	background-image: linear-gradient(to right top, #abc2e4, #92cef0, #75dbf0, #67e5e2,
-		#79edc8);
-	color: #fff;
-	font-size: 16px;
-	font-weight: bold;
-	padding: 8px 10px;
-	border: none;
-	border-radius: 5px;
-	text-align: center;
-	text-decoration: none;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
-	display: flex;
-	flex-direction: column;
-}
-
-table button:hover {
-	background-color: #0062cc;
-}
-
-#head_tamil {
-	position: sticky;
-	top: 50px;
-	z-index: 10;
-}
-
-#chartCanvas {
-	width: 650px;
-	margin: 0 auto;
-}
-
-.piechart_heading {
-	text-align: center;
-	font-weight: 700;
-	font-size: 18px;
-	color: indianred;
-}
-
-fieldset {
-	padding: 0;
-	margin: 0;
-	border: 0;
-	max-width: 340px;
-	border-radius: 20px;
-	width: 100%;
-	position: sticky;
-	top: 50px;
-}
-
-legend {
-	font-size: 22px;
-	font-weight: 600;
-	color: #191919;
-	margin: 0;
-	background: #edf4fe;
-	width: 100%;
-	padding: 20px;
-	box-sizing: border-box;
-	border-radius: 10px 10px 0 0;
-	border: 2px solid #3a88f6;
-	display: flex;
-}
-
-fieldset label {
-	font-weight: 300;
-	font-size: 16px;
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	flex: 1;
-	box-sizing: border-box;
-	display: flex;
-	padding: 20px 20px 20px 50px;
-	font-weight: 500;
-	color: #191919;
-	-webkit-tap-highlight-color: transparent;
-}
-
-fieldset input[type="radio"] {
-	position: relative;
-	appearance: none;
-	-webkit-appearance: none;
-	transition: linear 0.8s;
-	height: 0;
-	width: 0;
-	-webkit-tap-highlight-color: transparent;
-}
-
-fieldset input[type="radio"]:after {
-	content: "";
-	position: absolute;
-	height: 16px;
-	width: 16px;
-	top: -10.5px;
-	left: -30px;
-	border-radius: 20px;
-	border: 2px solid #3a88f6;
-	transition: linear 0.2s;
-	cursor: pointer;
-}
-
-fieldset input[type="radio"]:checked:after {
-	content: "";
-	position: absolute;
-	height: 16px;
-	width: 16px;
-	background: #3a88f6;
-	transition: linear 0.2s;
-	cursor: pointer;
-}
-
-fieldset input[type="radio"]:checked:before {
-	content: "";
-	position: absolute;
-	height: 8px;
-	width: 8px;
-	border-radius: 4px;
-	background: #fff;
-	left: -24px;
-	top: -4.5px;
-	z-index: 1;
-	cursor: pointer;
-}
-
-.radio-item-container {
-	display: flex;
-	flex-direction: column;
-	border: 2px solid #3a88f6;
-	border-top: 0;
-	background: #fff;
-	border-radius: 0 0 10px 10px;
-	padding: 10px 0;
-}
-
-.radio-item {
-	display: flex;
-	position: relative;
-}
-
-.icon {
-	font-size: 24px;
-	position: absolute;
-	right: 26px;
-	top: 11px;
-	transition: linear 0.3s;
-}
-
-fieldset input[type="radio"]:checked+span>.icon {
-	transform: scale(1.3);
-	color: red;
-}
-</style>
 
 </head>
 
 <body>
 <jsp:include page="${request.getContextPath()}/homeNavBar.jsp"></jsp:include>
 	
-	<p class="piechart_heading">தமிழக கட்சிகளில் எத்தனை முறை வெற்றி
-		பெறுகிறது என்பதை இது காட்டுகிறது</p>
-	<canvas id="chartCanvas"></canvas>
+	<p class="piechart_heading">
+How many times have Tamil Nadu parties won?
+It shows that it gets.</p>
+	<!--  <canvas id="chartCanvas"></canvas>-->
 
 
 	<div class="pastleaders">
-		<h1>தமிழ்நாட்டு முதலமைச்சர்களின் பட்டியல்</h1>
+		<h1>TamilNaadu chief Minister List</h1>
 
-		<p>இந்திய அரசியலில் தமிழ்நாடு மாநிலம் எப்போதும் முக்கியப்
-			பங்காற்றுகிறது. இந்த மாநிலத்தின் தலைவர்கள் அதன் குடிமக்கள்
-			அனைவருக்கும் நல்வாழ்வை உறுதிப்படுத்த அயராது உழைத்துள்ளனர்.</p>
+		<p>Tamil Nadu state has always been important in Indian politics
+contributes The leaders of this state are its citizens
+They have worked tirelessly to ensure the well-being of all.</p>
 		<div class="pastleaderside">
 
 			<fieldset>
@@ -296,11 +239,11 @@ fieldset input[type="radio"]:checked+span>.icon {
 			<table class="table bitmap" id="my-table">
 				<tr id="head_tamil">
 
-					<th scope="col">வா.எண்</th>
-					<th scope="col">முதல்வர்</th>
-					<th class="date" scope="col">இருந்து</th>
-					<th class="date" scope="col">வரை</th>
-					<th scope="col">கட்சி பெயர்</th>
+					<th scope="col">R.No</th>
+					<th scope="col">cheif Ministers</th>
+					<th class="date" scope="col">From</th>
+					<th class="date" scope="col">To</th>
+					<th scope="col">Party Name</th>
 
 				</tr>
 
@@ -775,20 +718,21 @@ fieldset input[type="radio"]:checked+span>.icon {
     </script>
 
 	<script>
-const past_leader_one = JSON.parse(localStorage.getItem("past_leader"));
+const past_leader_one = JSON.parse(localStorage.getItem("past_leaders_english"));
 const languagess = localStorage.getItem("language");
 
 const past_leaders_english_one = JSON.parse(localStorage.getItem("past_leaders_english"));
 
-const dmk = "../../assets/images/flages/dmk-logo.png";
-const aiadmk = "../../assets/images/flages/aiadmk.png";
-const bjp = "../../assets/images/flages/bjp.jpg";
-const congress = "../../assets/images/flages/inc.png";
-const others1 = "../../assets/images/ministers/not-iamge.jpg";
+const dmk = "https://freeimghost.net/images/2023/05/07/dmk-logo.png";
+const aiadmk = "https://freeimghost.net/images/2023/05/07/aiadmk.png";
+const bjp = "https://freeimghost.net/images/2023/05/07/bjp.jpeg";
+const congress = "https://freeimghost.net/images/2023/05/07/inc.png";
+const others1 = "https://freeimghost.net/images/2023/05/13/not-iamge.jpeg";
 
 function default_list(array) {
   document.querySelector(".table_body").innerHTML = "";
   array.forEach((values) => {
+	  
     const tr = document.createElement("tr");
 
     // create table cell elements and set their content
@@ -806,11 +750,11 @@ function default_list(array) {
     const pastLeaderDiv = document.createElement("div");
     pastLeaderDiv.setAttribute("id", "pastleader");
     pastLeaderDiv.setAttribute("class", "fontsidepro");
-    pastLeaderDiv.innerHTML = `<p>${values.name}</p>`;
+    pastLeaderDiv.innerHTML = `<p>\${values.name}</p>`;
 
     const backsideproDiv = document.createElement("div");
     backsideproDiv.setAttribute("class", "backsidepro");
-    backsideproDiv.innerHTML = `<p></p><img src="${values.image}" alt="${values.name}">`;
+    backsideproDiv.innerHTML = `<p></p><img src=\${values.image} alt=\${values.name}>`;
 
     const buttonElement = document.createElement("button");
     const aElement = document.createElement("a");
@@ -1034,7 +978,7 @@ sortNameButton1.addEventListener("click", () => {
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<script src="<%=request.getContextPath()%>/assets/js/trsnslate.js"></script>
+   <script src="<%=request.getContextPath()%>/assets/js/trsnslate.js"></script>
 
 </body>
 

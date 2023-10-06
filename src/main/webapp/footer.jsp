@@ -21,7 +21,7 @@
 						</div>
 						<ul>
 							<li><a href="index.jsp" class="">Home</a></li>
-							<li><a href="electioTypes.jsp" class="">portfolio</a></li>
+							<li><a href="electionTypes.jsp" class="">portfolio</a></li>
 
 							<li><a href="mlaList.jsp" class="">
 									MLA</a></li>

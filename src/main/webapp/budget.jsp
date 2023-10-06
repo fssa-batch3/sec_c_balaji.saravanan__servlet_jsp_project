@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="<%=request.getContextPath()%>/assets/css/footer.css"
 	rel="stylesheet">
+	<link href="<%=request.getContextPath()%>/assets/css/index.css"
+	rel="stylesheet">
     <style>
         body {
             -webkit-text-size-adjust: none;
@@ -159,12 +161,16 @@ let array_budject = [
 
         
     </script>
+    
+    
+    
+    
 
 <jsp:include page="${request.getContextPath()}/footer.jsp"></jsp:include>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script src="../../main.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/trsnslate.js"></script>
 
 </body>
 

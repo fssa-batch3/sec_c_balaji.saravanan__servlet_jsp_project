@@ -35,15 +35,20 @@ public class FilterLeader extends HttpServlet {
 
 			String constituency = (String) request.getParameter("constituency");
 			System.out.println(constituency);
-			int id = Integer.parseInt(request.getParameter("party"));
-
+			
+			int id = 0 ;
+			if(request.getParameter("party")!=null) {
+				id = Integer.parseInt(request.getParameter("party"));
+			}
+			
 			int electionId = Integer.parseInt(request.getParameter("election"));
 
 			AffidavitService affidavitService = getAffidavitService();
 
 			int constituencyId = affidavitService.readConstituencyId(constituency);
-			
-			
+
+			if ((constituency != "null" && electionId > 0 && id > 0)) {
+
 				List<Leader> leaderValues = affidavitService.readSpecificLeaderPartyId(id, electionId, constituencyId);
 
 				request.setAttribute("leaderValues", leaderValues);
@@ -52,7 +57,19 @@ public class FilterLeader extends HttpServlet {
 
 				dispatcher.forward(request, response);
 
-			
+			}
+
+			else if (electionId > 0 && constituency != "null") {
+
+				List<Leader> leaderValues = affidavitService.readeLeaderByconstituencyId(constituencyId, electionId);
+
+				request.setAttribute("leaderValues", leaderValues);
+
+				RequestDispatcher dispatcher = request.getRequestDispatcher("profile.jsp");
+
+				dispatcher.forward(request, response);
+
+			}
 
 		} catch (SQLException | DaoException e) {
 

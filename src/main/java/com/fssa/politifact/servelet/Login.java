@@ -39,34 +39,54 @@ public class Login extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 
+		String adminMail = "admin@gmail.com";
+		String adminPassoword = "Admin@gmail";
+
 		PrintWriter out = response.getWriter();
 
 		User user = new User();
 		user.setEmailId(email);
 		user.setPassword(password);
+		
+		HttpSession session = request.getSession(false);
+
 
 		try {
 
-			if (userservice.userLogin(email, password)) {
+			if (email.equals(adminMail) && password.equals(adminPassoword)) {
 
-				HttpSession session = request.getSession(false);
 				
+				session.setAttribute("adminemail", email);
+				
+				request.setAttribute("status", true);
+
+				request.getRequestDispatcher("index.jsp").forward(request, response);
+			}
+
+			else if (userservice.userLogin(email, password)) {
+
 				session.setAttribute("email", email);
+				
 				session.setAttribute("status", true);
 
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 
 			} else {
-				response.sendRedirect(request.getContextPath() + "/register.jsp?error=Login Failded");
+				
+				request.setAttribute("errorMessage", "Invalid User name and Password");
+
+				RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+				
+				dispatcher.forward(request, response);
 			}
 
 		} catch (DaoException | SQLException e) {
-			
-			response.sendRedirect("/register.jsp?errorMessage=" + e.getMessage());
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher(request.getContextPath() + "/register.jsp");
+			request.setAttribute("errorMessage", e.getMessage());
+
+			RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+			
 			dispatcher.forward(request, response);
-			 e.printStackTrace();
 
 		}
 

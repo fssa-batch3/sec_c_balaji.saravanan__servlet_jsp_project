@@ -161,6 +161,7 @@
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
+	margin-left:20px;
 }
 
 /* Style for the form-select (dropdown) elements */
@@ -305,7 +306,7 @@
 				<button type="submit">submit</button>
 			</form>
 
-			<!-- <form id="dropdownForm" action="FilterLeader">
+			 <form id="dropdownForm" action="FilterLeader">
 
 				<input type="hidden" name="election" value="<%=election%>">
 
@@ -329,7 +330,7 @@
 				</select>
 
 				<button type="submit">submit</button>
-			</form>-->
+			</form>
 		</div>
 	</div>
 

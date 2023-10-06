@@ -3,6 +3,7 @@
 	
 <%
 String loggedInEmail = (String) session.getAttribute("email");
+String adminLoggedInEmail = (String) session.getAttribute("adminemail");
 %>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
@@ -15,6 +16,7 @@ String loggedInEmail = (String) session.getAttribute("email");
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
+			
 				<li class="nav-item"><a class="nav-link active list_li"
 					aria-current="page" href="index.jsp" id="option_one">home</a></li>
 
@@ -24,7 +26,7 @@ String loggedInEmail = (String) session.getAttribute("email");
 				<li class="nav-item"><a class="nav-link list_li"
 					href="pastLeaders.jsp" id="option_four">Past Leader</a></li>
 				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle list_li" href="#"
+					class="nav-link nav-link dropdown-toggle list_li" href="#"
 					id="navbarDropdown" role="button" data-bs-toggle="dropdown"
 					aria-expanded="false" id="five_option"> More </a>
 					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -67,14 +69,14 @@ String loggedInEmail = (String) session.getAttribute("email");
 
 
 				<li class="nav-item" id="like_list"><a class="nav-link"
-					href="${root}/pages/like_list.html"><span
+					href="#"><span
 						class="glyphicon glyphicon-user"></span><i class="fa fa-heart"></i></a>
 				</li>
 
 
 
 				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle list_li" href="#"
+					class="nav-link nav-link dropdown-toggle list_li" href="#"
 					id="navbarDropdown" role="button" data-bs-toggle="dropdown"
 					aria-expanded="false"> Language </a>
 					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -105,22 +107,69 @@ String loggedInEmail = (String) session.getAttribute("email");
 	</div>
 </nav>
 
+
+
+<script>
+       
+        function highlightActiveLink() {
+        	
+            var currentUrl = window.location.href;
+            
+            var navLinks = document.querySelectorAll('.nav-link');
+            
+            
+            for (var i = 0; i < navLinks.length; i++) {
+            	
+                navLinks[i].style.color="white";
+            }
+            
+            for (var i = 0; i < navLinks.length; i++) {
+                if (currentUrl.indexOf(navLinks[i].getAttribute('href')) !== -1) {
+                    navLinks[i].style.color="rgb(187 247 208)";
+                    break;
+                }
+            }
+        }
+        
+        highlightActiveLink();
+        
+    </script>
+
 <script>
        
         	
     const loggedInEmail = "<%=loggedInEmail%>";
+    
+    const adminLoggedInEmail = "<%=adminLoggedInEmail%>";
 
 	const loginbut = document.getElementById("option_six");
+	
+	const adminbtn = document.getElementById("admin");
 
 	const account = document.getElementById("my-account");
 
-	if (loggedInEmail == "null") {
+	if (loggedInEmail == "null" && adminLoggedInEmail == "null") {
+		
+		console.log("balaji s")
 
 		account.style.display = "none";
+		
+		adminbtn.style.display= "none";
 
 		loginbut.style.display = "block";
 
-	} else {
+	} else if(adminLoggedInEmail !="null" ){
+		
+		adminbtn.style.display= "block";
+		
+		loginbut.style.display = "none";
+		
+		account.style.display = "none";
+	}
+	
+	else {
+		
+		adminbtn.style.display= "none";
 
 		account.style.display = "block";
 

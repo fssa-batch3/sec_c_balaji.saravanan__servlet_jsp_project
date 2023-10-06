@@ -13,7 +13,6 @@
 	rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 <style>
 .h_100_1 {
 	min-width: 300px;
@@ -60,6 +59,48 @@
 .card span b {
 	font-weight: bold;
 }
+
+#search_result {
+	position: fixed;
+	top: 6.5%;
+	left: 0;
+	width: 50%;
+	height: 400px;
+	overflow: scroll;
+	margin: 0 20%;
+	display: none;
+	z-index: 9999;
+}
+
+#search_result::-webkit-scrollbar {
+	display: none;
+}
+
+.card4 {
+	background-color: #ffffff;
+	border-radius: 5px;
+	box-shadow: 5px 5px 10px #e6e6e6, -5px -5px 10px #ffffff;
+	margin-bottom: 0.5em;
+	padding: 1em;
+	transition: transform 0.2s ease-in-out;
+}
+
+.card4:hover {
+	transform: translateY(-5px);
+}
+
+.card4 a {
+	color: #333333;
+	font-size: 1rem;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.card4 p {
+	color: #666666;
+	font-size: 0.9rem;
+	margin-top: 0.3em;
+}
 </style>
 
 <link
@@ -71,6 +112,8 @@
 <body>
 
 	<jsp:include page="${request.getContextPath()}/homeNavBar.jsp"></jsp:include>
+
+	<div id="search_result"></div>
 
 
 	<div class="headvideo">
@@ -100,10 +143,6 @@
 			from electing a politician - especially not the one who directs it.<br>
 			To maintain that position Dedicated status party.
 		</p>
-
-		<button type="button" class="btn btn-outline-dark ">
-			<a class="text-center text-decoration-none" href="">Opinion</a>
-		</button>
 
 	</div>
 
@@ -237,8 +276,13 @@
 
 	<%
 	String loggedInEmail = (String) session.getAttribute("email");
+	String adminLoggedInEmail = (String) session.getAttribute("adminemail");
 	%>
+	this is admin mail:
+	<%=adminLoggedInEmail%>
+	<%=loggedInEmail%>
 
+	<a href="LogOut">logout</a>
 	<script>
 		
 	</script>
@@ -257,7 +301,9 @@
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+	<script src="<%=request.getContextPath()%>/assets/js/search.js"></script>
 
 </body>
 </html>

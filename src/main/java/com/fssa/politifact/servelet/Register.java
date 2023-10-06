@@ -55,6 +55,7 @@ public class Register extends HttpServlet {
 			request.setAttribute("status", "true");
 			
 		} catch (DaoException | SQLException | LeaderValidateException e) {
+			
 			request.setAttribute("errorMessage", e.getMessage());
 			
 			request.setAttribute("email", email);

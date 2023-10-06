@@ -16,6 +16,9 @@
 	
 	<link href="<%=request.getContextPath()%>/assets/css/footer.css"
 	rel="stylesheet">
+	
+	<link href="<%=request.getContextPath()%>/assets/css/index.css"
+	rel="stylesheet">
 <title>List of Leaders</title>
 </head>
 <body>
@@ -45,9 +48,9 @@
 
 					<p class="minister_name"><%=leader.getName()%></p>
 
-					<p class="coun_of_minister">Minister</p>
+					<p class="coun_of_minister"><%= leader.getPartyName() %></p>
 
-					<p class="minister_pos"><%=leader.getPosition()%></p>
+					<p class="minister_pos"><%=(leader.getPosition().toString() == "MEMBER_OF_LEGISLATIVE_ASSEMBLY") ? "Minister" : "nnn"%></p>
 
 					<p class="view_portfolio">
 

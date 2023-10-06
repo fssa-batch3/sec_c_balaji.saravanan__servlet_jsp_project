@@ -5,7 +5,6 @@
 <html>
 <head>
 <style>
-
 </style>
 <meta charset="ISO-8859-1">
 <title>Error Page</title>
@@ -18,77 +17,75 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
 	crossorigin="anonymous"></script>
-	<style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            
-            background-image: url('assets/images/logo.png'); 
-            background-size: cover;
-            background-position: center;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
+<style>
+.page_404 {
+	padding: 40px 0;
+	background: #fff;
+	margin-left: 10%;
+}
 
-        h1 {
-        background-color: rgb(220 252 231);
-            font-size: 2rem;
-            color: #333;
-            margin-bottom: 10px;
-            animation: fadeIn 1s ease-in-out;
-            
-        }
+.page_404  img {
+	width: 100%;
+}
 
-        p {
-        background-color: rgb(220 252 231);
-            font-size: 1.2rem;
-            color: #555;
-            animation: slideIn 1s ease-in-out;
-        }
+.four_zero_four_bg {
+	background-image:
+		url(https://cdn.dribbble.com/users/722246/screenshots/3066818/404-page.gif);
+	height: 300px;
+	background-position: center;
+}
 
-        a {
-        
-            color: #007BFF;
-            text-decoration: none;
-            transition: color 0.3s ease-in-out;
-        }
+.four_zero_four_bg h1 {
+	font-size: 80px;
+}
 
-        a:hover {
-            color: #0056b3;
-        }
+.four_zero_four_bg h3 {
+	font-size: 80px;
+}
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
+.link_404 {
+	color: #fff !important;
+	padding: 10px 20px;
+	background: #39ac31;
+	margin: 20px 0;
+	display: inline-block;
+}
 
-        @keyframes slideIn {
-            from {
-                transform: translateY(-20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-    </style>
+.contant_box_404 {
+	margin-top: -50px;
+}
+</style>
 </head>
 <body>
-	
-	<h1>Error Page 500</h1> 
-	<p>Page doesn't exist</p>
-	<p>
-		Please go to <a href="index.jsp">home</a> page
-	</p>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<section class="page_404">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 ">
+					<div class="col-sm-10 col-sm-offset-1  text-center">
+						<div class="four_zero_four_bg"></div>
+
+						<div class="contant_box_404">
+						<br>
+						<br>
+						<br>
+							<h3 class="h2">Look like you're lost</h3>
+
+							<p>the page you are looking for not avaible!</p>
+
+							<a href="index.jsp" class="link_404">Go to Home</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
 </body>
 </html>

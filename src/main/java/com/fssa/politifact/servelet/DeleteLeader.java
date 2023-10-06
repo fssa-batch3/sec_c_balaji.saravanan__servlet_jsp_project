@@ -47,6 +47,8 @@ public class DeleteLeader extends HttpServlet {
 		try {
 
 			leaderService.deleteLeader(id);
+			
+			request.setAttribute("errorMessage", "Delete Successfully");
 
 		} catch (LeaderValidateException | SQLException | DaoException e) {
 

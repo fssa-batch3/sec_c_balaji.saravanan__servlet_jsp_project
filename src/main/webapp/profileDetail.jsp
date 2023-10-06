@@ -55,12 +55,12 @@
 			<ul class="list-items">
 				<li><img src="<%=leader.getImageUrl()%>"
 					alt="<%=leader.getName()%>"></li>
-				<li><a href="#">Birth</a></li>
-				<li><a href="#"></i>Education</a></li>
-				<li><a href="#"></i>Past Work experience</a></li>
-				<li><a href="#">Politics</a></li>
-				<li><a href="#">Family</a></li>
-				<li><a href="#">Income</a></li>
+				<li><a href="#birth">Birth</a></li>
+				<li><a href="#educatiion"></i>Education</a></li>
+				<li><a href="#movie"></i>Past Work experience</a></li>
+				<li><a href="#politics">Politics</a></li>
+				<li><a href="#family">Family</a></li>
+				<li><a href="#income">Income</a></li>
 
 
 			</ul>
@@ -83,7 +83,7 @@
 
 
 				<p>
-					<strong>Role:</strong><%=leader.getPosition()%>
+					<strong>Role:</strong><%=(leader.getPosition().toString() == "MEMBER_OF_LEGISLATIVE_ASSEMBLY") ? "Minister" : "Council Minister"%>
 				</p>
 				<p>
 					<strong>NAME:</strong><%=leader.getName()%>

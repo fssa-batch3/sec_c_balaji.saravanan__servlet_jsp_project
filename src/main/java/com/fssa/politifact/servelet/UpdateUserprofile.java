@@ -40,13 +40,9 @@ public class UpdateUserprofile extends HttpServlet {
 			throws ServletException, IOException {
 		// Retrieve form parameters
 		String firstName = request.getParameter("user_name");
-
-		System.out.println(firstName);
-
 		String mobileNumber = request.getParameter("mobile_number");
 		String email = request.getParameter("regemail");
-		String password = request.getParameter("regpassword");
-		String occupation = request.getParameter("occupation");
+		String occupation = request.getParameter("occuption");
 		int age = Integer.parseInt(request.getParameter("user_age"));
 		String gender = request.getParameter("gender");
 
@@ -59,7 +55,6 @@ public class UpdateUserprofile extends HttpServlet {
 
 		user.setEmailId(email);
 		user.setUserName(firstName);
-		user.setPassword(password);
 		user.setMobileNo(mobileNumber);
 		user.setAge(age);
 		user.setOccupation(occupation);
@@ -72,20 +67,19 @@ public class UpdateUserprofile extends HttpServlet {
 			request.setAttribute("status", "true");
 
 		} catch (DaoException | SQLException | LeaderValidateException e) {
+			
 			request.setAttribute("errorMessage", e.getMessage());
 
 			request.setAttribute("email", email);
 			request.setAttribute("userName", firstName);
 			request.setAttribute("mobileNo", mobileNumber);
-			request.setAttribute("Password", password);
 			request.setAttribute("occupation", occupation);
 			request.setAttribute("age", age);
 			request.setAttribute("gender", gender);
 
-			e.printStackTrace();
 		}
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("UserProfile");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("UserProfile?email="+email);
 
 		dispatcher.forward(request, response);
 	}

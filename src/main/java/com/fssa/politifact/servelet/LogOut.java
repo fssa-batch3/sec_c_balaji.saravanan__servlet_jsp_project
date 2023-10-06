@@ -21,6 +21,7 @@ public class LogOut extends HttpServlet {
 
 		if (session != null) {
 			session.removeAttribute("loggedInEmail");
+			session.removeAttribute("adminLoggedInEmail");
 			session.invalidate();
 		}
 
